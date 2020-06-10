@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import Navbar from "./components/nav";
@@ -7,8 +7,7 @@ import Table from "./components/table";
 import Line from "./components/line"
 
 function App() {
-  const bichinhos = [
-    {
+let [bichinhos, setBichinhos] = useState([{
       nome: "Will",
       idade: "9 anos",
       genero: "Macho",
@@ -34,7 +33,7 @@ function App() {
       genero: "Fêmea",
       imagem: "https://jornalbomdia.com.br/tb_noticias/17912/fox.jpg",
     },
-  ];
+  ]);
 
   return (
     <div>
@@ -46,6 +45,7 @@ function App() {
               <Card data={bichinhos} key={bichinhos.nome} />
             </div>
           ))}
+          <button className="btn btn-dark" onClick={e => setBichinhos([])}>Limpar bichinhos</button>
         </div>
         <Table>
           {bichinhos.map((pet) => (
